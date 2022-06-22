@@ -1,0 +1,90 @@
+meta:
+  format: 2
+  name: DemoStation
+  author: Space-Wizards
+  postmapinit: false
+tilemap:
+  0: space
+  1: FloorArcadeBlue
+  2: FloorArcadeBlue2
+  3: FloorArcadeRed
+  4: FloorAsteroidIronsand1
+  5: FloorAsteroidIronsand2
+  6: FloorAsteroidIronsand3
+  7: FloorAsteroidIronsand4
+  8: FloorBoxing
+  9: FloorCarpetClown
+  10: FloorCarpetOffice
+  11: FloorEighties
+  12: FloorGrassJungle
+  13: FloorGym
+  14: FloorMetalDiamond
+  15: FloorShuttleBlue
+  16: FloorShuttleOrange
+  17: FloorShuttlePurple
+  18: FloorShuttleRed
+  19: FloorShuttleWhite
+  20: floor_asteroid_coarse_sand0
+  21: floor_asteroid_coarse_sand1
+  22: floor_asteroid_coarse_sand2
+  23: floor_asteroid_coarse_sand_dug
+  24: floor_asteroid_sand
+  25: floor_asteroid_tile
+  26: floor_bar
+  27: floor_blue
+  28: floor_blue_circuit
+  29: floor_clown
+  30: floor_dark
+  31: floor_elevator_shaft
+  32: floor_freezer
+  33: floor_glass
+  34: floor_gold
+  35: floor_grass
+  36: floor_green_circuit
+  37: floor_hydro
+  38: floor_kitchen
+  39: floor_laundry
+  40: floor_lino
+  41: floor_mime
+  42: floor_mono
+  43: floor_reinforced
+  44: floor_rglass
+  45: floor_rock_vault
+  46: floor_showroom
+  47: floor_silver
+  48: floor_snow
+  49: floor_steel
+  50: floor_steel_dirty
+  51: floor_techmaint
+  52: floor_white
+  53: floor_wood
+  54: lattice
+  55: plating
+grids:
+- settings:
+    chunksize: 16
+    tilesize: 1
+  chunks:
+  - ind: -1,-1
+    tiles: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANwAAAA==
+entities:
+- uid: 0
+  components:
+  - pos: 0.5,0.51564026
+    parent: null
+    type: Transform
+  - index: 0
+    type: MapGrid
+  - angularDamping: 100
+    linearDamping: 50
+    fixedRotation: False
+    bodyType: Dynamic
+    type: Physics
+  - fixtures: []
+    type: Fixtures
+  - gravityShakeSound: !type:SoundPathSpecifier
+      path: /Audio/Effects/alert.ogg
+    type: Gravity
+  - chunkCollection: {}
+    type: DecalGrid
+...
