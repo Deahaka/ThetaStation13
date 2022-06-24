@@ -47,7 +47,7 @@ jobs:
         key:  ${{ secrets.SSHKEY }}
         port: ${{ secrets.PORT }}
         source: "release/${{ github.sha }}"
-        target: "/home/thetastation/builds/"
+        target: ${{ secrets.BUILDS_FOLDER }}
         strip_components: 1
 
     - name: Update manifest JSON
