@@ -45,6 +45,7 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key:  ${{ secrets.SSHKEY }}
+        port: ${{ secrets.PORT }}
         source: "release/${{ github.sha }}"
         target: "/home/thetastation/builds"
         strip_components: 1
