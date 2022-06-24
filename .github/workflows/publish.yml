@@ -54,7 +54,7 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
-        PORT: ${{ secrets.PORT }}
+        port: ${{ secrets.PORT }}
         key:  ${{ secrets.SSHKEY }}
         script: /home/wizards-build-push/push.ps1 ${{ github.sha }}
 
