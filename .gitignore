@@ -18,7 +18,10 @@
 x64/
 x86/
 bld/
-[Bb]in/
+[Bb]in/*
+![Bb]in/Content.Server
+[Bb]in/Content.Server/*
+!bin/Content.Server/server_config.toml
 [Oo]bj/
 [Ll]og/
 
