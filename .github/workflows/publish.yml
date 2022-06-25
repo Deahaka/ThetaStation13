@@ -50,14 +50,14 @@ jobs:
         target: ${{ secrets.BUILDS_FOLDER }}
         strip_components: 1
 
-    - name: Update manifest JSON
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        port: ${{ secrets.PORT }}
-        key:  ${{ secrets.SSHKEY }}
-        script: /home/wizards-build-push/push.ps1 ${{ github.sha }}
+   # - name: Update manifest JSON
+   #  uses: appleboy/ssh-action@master
+   #  with:
+   #    host: ${{ secrets.HOST }}
+   #    username: ${{ secrets.USERNAME }}
+   #    port: ${{ secrets.PORT }}
+   #    key:  ${{ secrets.SSHKEY }}
+   #    script: /home/wizards-build-push/push.ps1 ${{ github.sha }}
   release:
     name: Release
     runs-on: ubuntu-latest
