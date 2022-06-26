@@ -18,10 +18,9 @@ SERVER_FILES = [
     "SS14.Server_win-x64.zip",
     "SS14.Server_osx-x64.zip"
 ]
-
 VERSION = os.environ['GITHUB_SHA']
 FORK_ID = "theta"
-BUILD_URL = f"https://theta.dushess.net/release/{FILE}"
+BUILD_URL = f"https://theta.dushess.net/builds/{{FORK_VERSION}}/{FILE}"
 MANIFEST_URL = f"https://theta.dushess.net/manifests/manifest.json"
 MANIFEST_DOWNLOAD_URL = f"https://theta.dushess.net/manifests/manifest.json"
 
