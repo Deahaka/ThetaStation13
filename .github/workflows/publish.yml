@@ -57,9 +57,9 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key:  ${{ secrets.SSHKEY }}
         port: ${{ secrets.PORT }}
-        source: "release/${{ github.sha }}/*.zip"
+        source: "release/${{ github.sha }}/SS14.Client.zip"
         target: ${{ secrets.RELEASE_FOLDER }}
-        strip_components: 1
+        rm: true
 
     - name: Update manifest JSON
       uses: appleboy/ssh-action@master
