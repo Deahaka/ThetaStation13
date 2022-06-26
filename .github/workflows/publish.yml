@@ -49,6 +49,17 @@ jobs:
         source: "release/${{ github.sha }}"
         target: ${{ secrets.BUILDS_FOLDER }}
         strip_components: 1
+  
+    - name: Upload release
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key:  ${{ secrets.SSHKEY }}
+        port: ${{ secrets.PORT }}
+        source: "release/${{ github.sha }}/*.zip"
+        target: ${{ secrets.RELEASE_FOLDER }}
+        strip_components: 1
 
     - name: Update manifest JSON
       uses: appleboy/ssh-action@master
