@@ -37,8 +37,7 @@ jobs:
     - name: Shuffle files around
       run: |
         mkdir "release/${{ github.sha }}"
-        cp release/*.zip /
-        mv release/*.zip "release/${{ github.sha }}"
+        cp release/*.zip "release/${{ github.sha }}"
 
     - name: Upload files to centcomm
       uses: appleboy/scp-action@master
@@ -58,8 +57,8 @@ jobs:
         username: ${{ secrets.USERNAME }}
         key:  ${{ secrets.SSHKEY }}
         port: ${{ secrets.PORT }}
-        source: "*.zip"
-        target: ${{ secrets.RELEASE_FOLDER }}
+        source: "release/*.zip"
+        target: ${{ secrets.HOME_FOLDER }}
         rm: true
 
     - name: Update manifest JSON
