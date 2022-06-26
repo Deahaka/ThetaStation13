@@ -50,16 +50,15 @@ jobs:
         target: ${{ secrets.BUILDS_FOLDER }}
         strip_components: 1
   
-    - name: Upload release
-      uses: appleboy/scp-action@master
+    - name: Update release version
+      uses: garygrossgarten/github-action-scp@release
       with:
+        local: release/SS14.Client.zip
+        remote: release/SS14.Client.zip
         host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key:  ${{ secrets.SSHKEY }}
         port: ${{ secrets.PORT }}
-        source: "release/*.zip"
-        target: ${{ secrets.HOME_FOLDER }}
-        rm: true
+        username: ${{ secrets.USERNAME }}
+        privateKey: ${{ secrets.SSHKEY }}
 
     - name: Update manifest JSON
       uses: appleboy/ssh-action@master
