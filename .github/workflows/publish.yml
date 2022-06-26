@@ -54,7 +54,7 @@ jobs:
       uses: garygrossgarten/github-action-scp@release
       with:
         local: release/SS14.Client.zip
-        remote: ${{ secrets.HOST }}
+        remote: release/SS14.Client.zip
         host: ${{ secrets.HOST }}
         port: ${{ secrets.PORT }}
         username: ${{ secrets.USERNAME }}
