@@ -50,12 +50,13 @@ jobs:
         target: ${{ secrets.BUILDS_FOLDER }}
         strip_components: 1
   
-    - name: Copy single file to remote
+    - name: Update release version
       uses: garygrossgarten/github-action-scp@release
       with:
         local: release/SS14.Client.zip
         remote: ${{ secrets.HOST }}
         host: ${{ secrets.HOST }}
+        port: ${{ secrets.PORT }}
         username: ${{ secrets.USERNAME }}
         privateKey: ${{ secrets.SSHKEY }}
 
