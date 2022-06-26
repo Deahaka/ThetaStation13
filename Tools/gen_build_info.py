@@ -20,7 +20,7 @@ SERVER_FILES = [
 ]
 VERSION = os.environ['GITHUB_SHA']
 FORK_ID = "theta"
-BUILD_URL = f"https://theta.dushess.net/builds/{FORK_ID}/{{FORK_VERSION}}/{FILE}"
+BUILD_URL = f"https://theta.dushess.net/builds/{{FORK_VERSION}}/{FILE}"
 MANIFEST_URL = f"https://theta.dushess.net/manifests/{{FORK_VERSION}}/manifest.json"
 MANIFEST_DOWNLOAD_URL = f"https://theta.dushess.net/manifests/{{FORK_VERSION}}/manifest.json"
 
