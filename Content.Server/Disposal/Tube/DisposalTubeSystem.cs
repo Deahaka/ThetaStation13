@@ -72,7 +72,7 @@ namespace Content.Server.Disposal.Tube
             }
 
             component.LastClang = _gameTiming.CurTime;
-            SoundSystem.Play(component.ClangSound.GetSound(), Filter.Pvs(uid), uid);
+            SoundSystem.Play(Filter.Pvs(uid), component.ClangSound.GetSound(), uid);
         }
 
         private void OnBreak(EntityUid uid, DisposalTubeComponent component, BreakageEventArgs args)
@@ -125,7 +125,7 @@ namespace Content.Server.Disposal.Tube
                 return null;
             var oppositeDirection = nextDirection.GetOpposite();
 
-            var grid = _mapManager.GetGrid(EntityManager.GetComponent<TransformComponent>(targetTube.Owner).GridEntityId);
+            var grid = _mapManager.GetGrid(EntityManager.GetComponent<TransformComponent>(targetTube.Owner).GridID);
             var position = EntityManager.GetComponent<TransformComponent>(targetTube.Owner).Coordinates;
             foreach (var entity in grid.GetInDir(position, nextDirection))
             {

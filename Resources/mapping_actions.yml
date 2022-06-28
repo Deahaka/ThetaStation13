@@ -214,15 +214,15 @@
 - action: !type:InstantAction
     checkCanInteract: False
     icon:
-      entity: APCBasic
-    name: APCBasic
+      entity: SalternAPC
+    name: SalternAPC
     keywords: []
     clientExclusive: True
     autoPopulate: False
     temporary: True
     event: !type:StartPlacementActionEvent
       placementOption: SnapgridCenter
-      entityType: APCBasic
+      entityType: SalternAPC
   assignments:
   - 2: 3
 - action: !type:InstantAction
@@ -270,15 +270,15 @@
 - action: !type:InstantAction
     checkCanInteract: False
     icon:
-      entity: SubstationBasic
-    name: SubstationBasic
+      entity: SalternSubstation
+    name: SalternSubstation
     keywords: []
     clientExclusive: True
     autoPopulate: False
     temporary: True
     event: !type:StartPlacementActionEvent
       placementOption: SnapgridCenter
-      entityType: SubstationBasic
+      entityType: SalternSubstation
   assignments:
   - 2: 4
 - action: !type:InstantAction
@@ -312,15 +312,15 @@
 - action: !type:InstantAction
     checkCanInteract: False
     icon:
-      entity: SMESBasic
-    name: SMESBasic
+      entity: SalternSMES
+    name: SalternSMES
     keywords: []
     clientExclusive: True
     autoPopulate: False
     temporary: True
     event: !type:StartPlacementActionEvent
       placementOption: SnapgridCenter
-      entityType: SMESBasic
+      entityType: SalternSMES
   assignments:
   - 2: 5
 - action: !type:InstantAction

@@ -139,7 +139,6 @@ namespace Content.Shared.GameTicking
         public int PlayerCount { get; }
         public RoundEndPlayerInfo[] AllPlayersEndInfo { get; }
         public string? LobbySong;
-        public string? RestartSound;
 
         public RoundEndMessageEvent(
             string gamemodeTitle,
@@ -148,8 +147,7 @@ namespace Content.Shared.GameTicking
             int roundId,
             int playerCount,
             RoundEndPlayerInfo[] allPlayersEndInfo,
-            string? lobbySong,
-            string? restartSound)
+            string? lobbySong)
         {
             GamemodeTitle = gamemodeTitle;
             RoundEndText = roundEndText;
@@ -158,7 +156,6 @@ namespace Content.Shared.GameTicking
             PlayerCount = playerCount;
             AllPlayersEndInfo = allPlayersEndInfo;
             LobbySong = lobbySong;
-            RestartSound = restartSound;
         }
     }
 

@@ -1,4 +1,4 @@
-using Content.Server.Chemistry.Components;
+﻿using Content.Server.Chemistry.Components;
 using Content.Server.Chemistry.EntitySystems;
 using Content.Server.Cooldown;
 using Content.Server.Extinguisher;
@@ -10,7 +10,6 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Interaction;
 using Content.Shared.Vapor;
 using Robust.Shared.Audio;
-using Robust.Shared.Map;
 using Robust.Shared.Player;
 using Robust.Shared.Timing;
 
@@ -59,7 +58,7 @@ public sealed class SpraySystem : EntitySystem
 
         var playerPos = Transform(args.User).Coordinates;
 
-        if (args.ClickLocation.GetGridEntityId(EntityManager) != playerPos.GetGridEntityId(EntityManager))
+        if (args.ClickLocation.GetGridId(EntityManager) != playerPos.GetGridId(EntityManager))
             return;
 
         var direction = (args.ClickLocation.Position - playerPos.Position).Normalized;
@@ -113,7 +112,7 @@ public sealed class SpraySystem : EntitySystem
                 body.ApplyLinearImpulse(-impulseDirection * component.Impulse);
         }
 
-        SoundSystem.Play(component.SpraySound.GetSound(), Filter.Pvs(uid), uid, AudioHelpers.WithVariation(0.125f));
+        SoundSystem.Play(Filter.Pvs(uid), component.SpraySound.GetSound(), uid, AudioHelpers.WithVariation(0.125f));
 
         RaiseLocalEvent(uid,
             new RefreshItemCooldownEvent(curTime, curTime + TimeSpan.FromSeconds(component.CooldownTime)));

@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 using Robust.Client.Graphics;
 using Robust.Client.ResourceManagement;
 using Robust.Client.Utility;
+using Robust.Shared.Map;
 using Robust.Shared.Utility;
 
 namespace Content.Client.Atmos.EntitySystems
@@ -30,7 +31,7 @@ namespace Content.Client.Atmos.EntitySystems
         public readonly int[] FireFrameCounter = new int[FireStates];
         public readonly Texture[][] FireFrames = new Texture[FireStates][];
 
-        private readonly Dictionary<EntityUid, Dictionary<Vector2i, GasOverlayChunk>> _tileData =
+        private readonly Dictionary<GridId, Dictionary<Vector2i, GasOverlayChunk>> _tileData =
             new();
 
         public const int GasOverlayZIndex = 1;
@@ -94,7 +95,7 @@ namespace Content.Client.Atmos.EntitySystems
         }
 
         // Slightly different to the server-side system version
-        private GasOverlayChunk GetOrCreateChunk(EntityUid gridId, Vector2i indices)
+        private GasOverlayChunk GetOrCreateChunk(GridId gridId, Vector2i indices)
         {
             if (!_tileData.TryGetValue(gridId, out var chunks))
             {
@@ -129,12 +130,12 @@ namespace Content.Client.Atmos.EntitySystems
             }
         }
 
-        public bool HasData(EntityUid gridId)
+        public bool HasData(GridId gridId)
         {
             return _tileData.ContainsKey(gridId);
         }
 
-        public GasOverlayEnumerator GetOverlays(EntityUid gridIndex, Vector2i indices)
+        public GasOverlayEnumerator GetOverlays(GridId gridIndex, Vector2i indices)
         {
             if (!_tileData.TryGetValue(gridIndex, out var chunks))
                 return default;
@@ -148,7 +149,7 @@ namespace Content.Client.Atmos.EntitySystems
             return new GasOverlayEnumerator(overlays, this);
         }
 
-        public FireOverlayEnumerator GetFireOverlays(EntityUid gridIndex, Vector2i indices)
+        public FireOverlayEnumerator GetFireOverlays(GridId gridIndex, Vector2i indices)
         {
             if (!_tileData.TryGetValue(gridIndex, out var chunks))
                 return default;

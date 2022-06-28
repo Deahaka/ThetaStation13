@@ -8,7 +8,7 @@
   - type: Sprite
     netsync: false
   - type: Item
-    size: 30
+    size: 24
   - type: AmmoCounter
   - type: Gun
     minAngle: 2
@@ -56,6 +56,7 @@
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
   - type: Item
+    size: 24
     sprite: Objects/Weapons/Guns/SMGs/atreides.rsi
   - type: Gun
     fireRate: 10
@@ -79,6 +80,7 @@
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
   - type: Item
+    size: 24
     sprite: Objects/Weapons/Guns/SMGs/c20r.rsi
   - type: Gun
   - type: ChamberMagazineAmmoProvider
@@ -90,20 +92,21 @@
   - type: Appearance
 
 - type: entity
-  name: Vector
+  name: Drozd
   parent: BaseWeaponSubMachineGun
-  id: WeaponSubMachineGunVector
+  id: WeaponSubMachineGunDrozd
   description: An excellent fully automatic Heavy SMG.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/SMGs/vector.rsi
+    sprite: Objects/Weapons/Guns/SMGs/drozd.rsi
     layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
       - state: mag-0
         map: ["enum.GunVisualLayers.Mag"]
   - type: Item
-    sprite: Objects/Weapons/Guns/SMGs/vector.rsi
+    size: 24
+    sprite: Objects/Weapons/Guns/SMGs/drozd.rsi
   - type: Gun
     fireRate: 6
     selectedMode: FullAuto
@@ -155,6 +158,7 @@
         map: ["enum.GunVisualLayers.MagUnshaded"]
         shader: unshaded
   - type: Item
+    size: 24
     sprite: Objects/Weapons/Guns/SMGs/wt550.rsi
   - type: Gun
     fireRate: 5
@@ -184,9 +188,9 @@
   - type: Appearance
 
 - type: entity
-  name: Vector
-  parent: WeaponSubMachineGunVector
-  id: WeaponSubMachineGunVectorRubber
+  name: Drozd
+  parent: WeaponSubMachineGunDrozd
+  id: WeaponSubMachineGunDrozdRubber
   description: An excellent fully automatic Heavy SMG.
   suffix: Non-Lethal
   components:

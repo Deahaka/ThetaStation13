@@ -1,4 +1,5 @@
 using JetBrains.Annotations;
+using Robust.Shared.Map;
 
 namespace Content.Client.IconSmoothing
 {
@@ -13,7 +14,7 @@ namespace Content.Client.IconSmoothing
     [RegisterComponent]
     public sealed class IconSmoothComponent : Component
     {
-        public (EntityUid, Vector2i)? LastPosition;
+        public (GridId, Vector2i)? LastPosition;
 
         /// <summary>
         ///     We will smooth with other objects with the same key.

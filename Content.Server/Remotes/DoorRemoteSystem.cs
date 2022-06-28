@@ -24,7 +24,7 @@ namespace Content.Server.Remotes
             base.Initialize();
 
             SubscribeLocalEvent<DoorRemoteComponent, UseInHandEvent>(OnInHandActivation);
-            SubscribeLocalEvent<DoorRemoteComponent, BeforeRangedInteractEvent>(OnBeforeInteract);
+            SubscribeLocalEvent<DoorRemoteComponent, AfterInteractEvent>(OnAfterInteract);
         }
 
         public void OnInHandActivation(EntityUid user, DoorRemoteComponent component, UseInHandEvent args)
@@ -46,7 +46,7 @@ namespace Content.Server.Remotes
             }
         }
 
-        private void OnBeforeInteract(EntityUid uid, DoorRemoteComponent component, BeforeRangedInteractEvent args)
+        private void OnAfterInteract(EntityUid uid, DoorRemoteComponent component, AfterInteractEvent args)
         {
             if (!args.CanReach ||
                 args.Handled
@@ -82,7 +82,7 @@ namespace Content.Server.Remotes
                     }
                     else if (doorComponent.DenySound != null)
                     {
-                        SoundSystem.Play(doorComponent.DenySound.GetSound(), Filter.Pvs(args.Target.Value, entityManager: EntityManager), args.Target.Value);
+                        SoundSystem.Play(Filter.Pvs(args.Target.Value, entityManager: EntityManager), doorComponent.DenySound.GetSound(), args.Target.Value);
                     }
                 }
             }

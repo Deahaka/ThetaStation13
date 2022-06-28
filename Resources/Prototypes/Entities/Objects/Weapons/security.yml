@@ -8,7 +8,6 @@
     sprite: Objects/Weapons/Melee/stunbaton.rsi
     state: stunbaton_off
   - type: Stunbaton
-    energyPerUse: 100
   - type: MeleeWeapon
     damage:
       types:
@@ -16,9 +15,10 @@
     range: 1.5
     arcwidth: 60
     arc: default
-  - type: Battery
-    maxCharge: 1000
-    startingCharge: 1000
+  - type: PowerCellSlot
+    slotSize: Medium
+    cellSlot:
+      startingItem: PowerCellMediumHigh
   - type: ItemCooldown
   - type: Clothing
     sprite: Objects/Weapons/Melee/stunbaton.rsi

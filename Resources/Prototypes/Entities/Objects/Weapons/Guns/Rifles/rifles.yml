@@ -8,7 +8,7 @@
   - type: Sprite
     netsync: false
   - type: Item
-    size: 50
+    size: 24
   - type: AmmoCounter
   - type: Gun
     fireRate: 5
@@ -53,6 +53,7 @@
       - state: mag-0
         map: ["enum.GunVisualLayers.Mag"]
   - type: Item
+    size: 24
     sprite: Objects/Weapons/Guns/Rifles/ak.rsi
   - type: Gun
     fireRate: 5
@@ -86,9 +87,9 @@
   - type: Appearance
 
 - type: entity
-  name: M-90gl
+  name: Z8 Bulldog
   parent: BaseWeaponRifle
-  id: WeaponRifleM90GrenadeLauncher
+  id: WeaponRifleBulldog
   description: An older bullpup carbine model, with an attached underbarrel grenade launcher.
   components:
   - type: Sprite
@@ -99,6 +100,7 @@
       - state: mag-0
         map: ["enum.GunVisualLayers.Mag"]
   - type: Item
+    size: 24
     sprite: Objects/Weapons/Guns/Rifles/carbine.rsi
   - type: ItemSlots
     slots:
@@ -127,20 +129,21 @@
   - type: Appearance
 
 - type: entity
-  name: Lecter
+  name: Wintermute
   parent: BaseWeaponRifle
-  id: WeaponRifleLecter
+  id: WeaponRifleWintermute
   description: A high end military grade assault rifle.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Rifles/lecter.rsi
+    sprite: Objects/Weapons/Guns/Rifles/wintermute.rsi
     layers:
       - state: base
         map: ["enum.GunVisualLayers.Base"]
       - state: mag-0
         map: ["enum.GunVisualLayers.Mag"]
   - type: Item
-    sprite: Objects/Weapons/Guns/Rifles/lecter.rsi
+    size: 24
+    sprite: Objects/Weapons/Guns/Rifles/wintermute.rsi
   - type: Gun
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/ltrifle.ogg

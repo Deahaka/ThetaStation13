@@ -46,7 +46,7 @@ namespace Content.Server.AI.Pathfinding.Accessible
         /// Regions are groups of nodes with the same profile (for pathfinding purposes)
         /// i.e. same collision, not-space, same access, etc.
         /// </summary>
-        private readonly Dictionary<EntityUid, Dictionary<PathfindingChunk, HashSet<PathfindingRegion>>> _regions =
+        private readonly Dictionary<GridId, Dictionary<PathfindingChunk, HashSet<PathfindingRegion>>> _regions =
             new();
 
         /// <summary>
@@ -168,10 +168,10 @@ namespace Content.Server.AI.Pathfinding.Accessible
         {
             var xform = EntityManager.GetComponent<TransformComponent>(target);
             // TODO: Handle this gracefully instead of just failing.
-            if (!xform.GridEntityId.IsValid())
+            if (!xform.GridID.IsValid())
                 return false;
 
-            var targetTile = _mapManager.GetGrid(xform.GridEntityId).GetTileRef(xform.Coordinates);
+            var targetTile = _mapManager.GetGrid(xform.GridID).GetTileRef(xform.Coordinates);
             var targetNode = _pathfindingSystem.GetNode(targetTile);
 
             var collisionMask = 0;
@@ -206,10 +206,10 @@ namespace Content.Server.AI.Pathfinding.Accessible
         {
             var xform = EntityManager.GetComponent<TransformComponent>(entity);
 
-            if (xform.GridEntityId != targetNode.TileRef.GridUid)
+            if (xform.GridID != targetNode.TileRef.GridIndex)
                 return false;
 
-            var entityTile = _mapManager.GetGrid(xform.GridEntityId).GetTileRef(xform.Coordinates);
+            var entityTile = _mapManager.GetGrid(xform.GridID).GetTileRef(xform.Coordinates);
             var entityNode = _pathfindingSystem.GetNode(entityTile);
             var entityRegion = GetRegion(entityNode);
             var targetRegion = GetRegion(targetNode);
@@ -421,12 +421,12 @@ namespace Content.Server.AI.Pathfinding.Accessible
         {
             var xform = EntityManager.GetComponent<TransformComponent>(entity);
 
-            if (!xform.GridEntityId.IsValid())
+            if (!xform.GridID.IsValid())
             {
                 return null;
             }
 
-            var entityTile = _mapManager.GetGrid(xform.GridEntityId).GetTileRef(xform.Coordinates);
+            var entityTile = _mapManager.GetGrid(xform.GridID).GetTileRef(xform.Coordinates);
             var entityNode = _pathfindingSystem.GetNode(entityTile);
             return GetRegion(entityNode);
         }
@@ -709,7 +709,7 @@ namespace Content.Server.AI.Pathfinding.Accessible
         }
 
 #if DEBUG
-        private void SendRegionsDebugMessage(EntityUid gridId)
+        private void SendRegionsDebugMessage(GridId gridId)
         {
             if (_subscribedSessions.Count == 0) return;
             var grid = _mapManager.GetGrid(gridId);
@@ -757,7 +757,7 @@ namespace Content.Server.AI.Pathfinding.Accessible
         /// <param name="gridId"></param>
         /// <param name="regions"></param>
         /// <param name="cached"></param>
-        private void SendRegionCacheMessage(EntityUid gridId, IEnumerable<PathfindingRegion> regions, bool cached)
+        private void SendRegionCacheMessage(GridId gridId, IEnumerable<PathfindingRegion> regions, bool cached)
         {
             if (_subscribedSessions.Count == 0) return;
 

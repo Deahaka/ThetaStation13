@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Content.Client.Atmos.EntitySystems;
 using Content.Shared.Atmos.Prototypes;
@@ -24,12 +24,12 @@ namespace Content.Client.Administration.UI.Tabs.AtmosTab
         protected override void EnteredTree()
         {
             // Fill out grids
-            _gridData = IoCManager.Resolve<IMapManager>().GetAllGrids().Where(g => (int) g.GridEntityId != 0);
+            _gridData = IoCManager.Resolve<IMapManager>().GetAllGrids().Where(g => (int) g.Index != 0);
             foreach (var grid in _gridData)
             {
                 var player = IoCManager.Resolve<IPlayerManager>().LocalPlayer?.ControlledEntity;
-                var playerGrid = IoCManager.Resolve<IEntityManager>().GetComponentOrNull<TransformComponent>(player)?.GridEntityId;
-                GridOptions.AddItem($"{grid.GridEntityId} {(playerGrid == grid.GridEntityId ? " (Current)" : "")}");
+                var playerGrid = IoCManager.Resolve<IEntityManager>().GetComponentOrNull<TransformComponent>(player)?.GridID;
+                GridOptions.AddItem($"{grid.Index} {(playerGrid == grid.Index ? " (Current)" : "")}");
             }
 
             GridOptions.OnItemSelected += eventArgs => GridOptions.SelectId(eventArgs.Id);
@@ -52,7 +52,7 @@ namespace Content.Client.Administration.UI.Tabs.AtmosTab
                 return;
 
             var gridList = _gridData.ToList();
-            var gridIndex = gridList[GridOptions.SelectedId].GridEntityId;
+            var gridIndex = gridList[GridOptions.SelectedId].Index;
 
             var gasList = _gasData.ToList();
             var gasId = gasList[GasOptions.SelectedId].ID;

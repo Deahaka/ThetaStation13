@@ -3,6 +3,7 @@ using Content.Server.Atmos;
 using Content.Server.Atmos.EntitySystems;
 using Content.Server.NodeContainer.Nodes;
 using Content.Shared.Atmos;
+using Robust.Shared.Map;
 using Robust.Shared.Utility;
 
 namespace Content.Server.NodeContainer.NodeGroups
@@ -22,7 +23,7 @@ namespace Content.Server.NodeContainer.NodeGroups
 
         [ViewVariables] private AtmosphereSystem? _atmosphereSystem;
 
-        public EntityUid Grid => GridId;
+        public GridId Grid => GridId;
 
         public override void Initialize(Node sourceNode)
         {

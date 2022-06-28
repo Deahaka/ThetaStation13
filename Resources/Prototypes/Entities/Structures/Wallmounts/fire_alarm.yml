@@ -10,7 +10,7 @@
     usesApcPower: true
   - type: ExtensionCableReceiver
   - type: DeviceNetwork
-    deviceNetId: AtmosDevices
+    deviceNetId: Apc
     receiveFrequencyId: AtmosMonitor
     transmitFrequencyId: AtmosMonitor
   - type: ApcNetworkConnection

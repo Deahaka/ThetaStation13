@@ -65,7 +65,7 @@ namespace Content.Server.Speech
             var pitchedAudioParams = component.AudioParams.WithPitchScale(scale);
 
             component.LastTimeSoundPlayed = currentTime;
-            SoundSystem.Play(contextSound, Filter.Pvs(uid, entityManager: EntityManager), uid, pitchedAudioParams);
+            SoundSystem.Play(Filter.Pvs(uid, entityManager: EntityManager), contextSound, uid, pitchedAudioParams);
         }
     }
 }

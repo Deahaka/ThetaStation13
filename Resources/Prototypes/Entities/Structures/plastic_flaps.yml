@@ -24,6 +24,7 @@
       mask:
       - TabletopMachineMask
       layer:
+      - HighImpassable
       - MidImpassable
   - type: Damageable
     damageContainer: Inorganic
@@ -60,6 +61,7 @@
       - TabletopMachineMask
       layer:
       - Opaque
+      - HighImpassable
       - MidImpassable
   - type: Occluder
     sizeX: 32

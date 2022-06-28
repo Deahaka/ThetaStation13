@@ -14,8 +14,6 @@
         - CartridgeLightRifle
     proto: CartridgeLightRifle
     capacity: 30
-  - type: Item
-    size: 5
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container
@@ -46,6 +44,7 @@
     proto: CartridgeLightRifle
     capacity: 100
   - type: Item
+    size: 10
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Magazine/LightRifle/light_rifle_box.rsi
   - type: MagazineVisuals

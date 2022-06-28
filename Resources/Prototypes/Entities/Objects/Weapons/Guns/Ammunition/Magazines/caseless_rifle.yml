@@ -13,8 +13,6 @@
         - CartridgeCaselessRifle
     proto: CartridgeCaselessRifle
     capacity: 30
-  - type: Item
-    size: 5
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container
@@ -41,8 +39,6 @@
   - type: BallisticAmmoProvider
     proto: CartridgeCaselessRifle
     capacity: 10
-  - type: Item
-    size: 3
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Magazine/CaselessRifle/caseless_rifle_mag_short.rsi
     layers:
@@ -59,15 +55,13 @@
   components:
   - type: Tag
     tags:
-      - MagazinePistolCaselessRifle
+      - MagazinePistol
   - type: BallisticAmmoProvider
     whitelist:
       tags:
         - CartridgeCaselessRifle
     proto: CartridgeCaselessRifle
     capacity: 10
-  - type: Item
-    size: 5
   - type: Sprite
     sprite: Objects/Weapons/Guns/Ammunition/Magazine/CaselessRifle/caseless_pistol_mag.rsi
     layers:

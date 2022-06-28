@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Threading;
 using Content.Server.Chat.Managers;
-using Content.Server.GameTicking.Rules.Configurations;
 using Content.Server.Players;
 using Content.Server.Roles;
 using Content.Server.Station.Components;
@@ -203,7 +202,7 @@ public sealed class SuspicionRuleSystem : GameRuleSystem
         }
     }
 
-    public override void Started(GameRuleConfiguration _)
+    public override void Started()
     {
         _playerManager.PlayerStatusChanged += PlayerManagerOnPlayerStatusChanged;
 
@@ -216,7 +215,7 @@ public sealed class SuspicionRuleSystem : GameRuleSystem
         var filter = Filter.Empty()
             .AddWhere(session => ((IPlayerSession) session).ContentData()?.Mind?.HasRole<SuspicionTraitorRole>() ?? false);
 
-        SoundSystem.Play(_addedSound.GetSound(), filter, AudioParams.Default);
+        SoundSystem.Play(filter, _addedSound.GetSound(), AudioParams.Default);
 
         _doorSystem.AccessType = SharedDoorSystem.AccessTypes.AllowAllNoExternal;
 
@@ -269,7 +268,7 @@ public sealed class SuspicionRuleSystem : GameRuleSystem
         Timer.SpawnRepeating(DeadCheckDelay, CheckWinConditions, _checkTimerCancel.Token);
     }
 
-    public override void Ended(GameRuleConfiguration _)
+    public override void Ended()
     {
         _doorSystem.AccessType = SharedDoorSystem.AccessTypes.Id;
         EndTime = null;

@@ -1,4 +1,4 @@
-using Content.Server.Administration;
+﻿using Content.Server.Administration;
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Administration;
 using Content.Shared.Atmos;
@@ -17,8 +17,10 @@ namespace Content.Server.Atmos.Commands
         public void Execute(IConsoleShell shell, string argStr, string[] args)
         {
             if (args.Length < 2) return;
-            if(!EntityUid.TryParse(args[0], out var gridId)
+            if(!int.TryParse(args[0], out var id)
                || !float.TryParse(args[1], out var temperature)) return;
+
+            var gridId = new GridId(id);
 
             var mapMan = IoCManager.Resolve<IMapManager>();
 

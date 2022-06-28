@@ -24,7 +24,7 @@ namespace Content.Server.Construction.Commands
         {
             var player = shell.Player as IPlayerSession;
             var entityManager = IoCManager.Resolve<IEntityManager>();
-            EntityUid gridId;
+            GridId gridId;
 
             switch (args.Length)
             {
@@ -35,16 +35,16 @@ namespace Content.Server.Construction.Commands
                         return;
                     }
 
-                    gridId = entityManager.GetComponent<TransformComponent>(playerEntity).GridEntityId;
+                    gridId = entityManager.GetComponent<TransformComponent>(playerEntity).GridID;
                     break;
                 case 1:
-                    if (!EntityUid.TryParse(args[0], out var id))
+                    if (!int.TryParse(args[0], out var id))
                     {
-                        shell.WriteLine($"{args[0]} is not a valid entity.");
+                        shell.WriteLine($"{args[0]} is not a valid integer.");
                         return;
                     }
 
-                    gridId = id;
+                    gridId = new GridId(id);
                     break;
                 default:
                     shell.WriteLine(Help);

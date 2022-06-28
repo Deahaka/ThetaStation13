@@ -8,6 +8,7 @@
   - type: Sprite
     netsync: false
   - type: Item
+    size: 24
   - type: Gun
     fireRate: 20
     selectedMode: FullAuto
@@ -31,6 +32,7 @@
     - state: icon
       map: ["enum.GunVisualLayers.Base"]
   - type: Item
+    size: 24
     sprite: Objects/Weapons/Guns/HMGs/minigun.rsi
   - type: Gun
     fireRate: 15

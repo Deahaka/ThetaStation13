@@ -27,10 +27,11 @@
     - type: ApcPowerReceiver
     - type: ExtensionCableReceiver
     - type: DeviceNetwork
-      deviceNetId: AtmosDevices
+      deviceNetId: Apc
       receiveFrequencyId: AtmosMonitor
       transmitFrequencyId: AtmosMonitor
       prefix: device-address-prefix-vent
+    - type: ApcNetworkConnection
     - type: AtmosAlarmable
       alarmedBy:
       - AirAlarm
@@ -98,10 +99,11 @@
     - type: ApcPowerReceiver
     - type: ExtensionCableReceiver
     - type: DeviceNetwork
-      deviceNetId: AtmosDevices
+      deviceNetId: Apc
       receiveFrequencyId: AtmosMonitor
       transmitFrequencyId: AtmosMonitor
       prefix: device-address-prefix-scrubber
+    - type: ApcNetworkConnection
     - type: AtmosAlarmable
       alarmedBy:
       - AirAlarm

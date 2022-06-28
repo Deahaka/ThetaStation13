@@ -178,7 +178,7 @@ namespace Content.Server.Cuffs.Components
                 eventArgs.User.PopupMessage(Loc.GetString("handcuff-component-start-cuffing-target-message",("targetName", eventArgs.Target)));
                 eventArgs.User.PopupMessage(target, Loc.GetString("handcuff-component-start-cuffing-by-other-message",("otherName", eventArgs.User)));
             }
-            SoundSystem.Play(StartCuffSound.GetSound(), Filter.Pvs(Owner), Owner);
+            SoundSystem.Play(Filter.Pvs(Owner), StartCuffSound.GetSound(), Owner);
 
             TryUpdateCuff(eventArgs.User, target, cuffed);
             return true;
@@ -215,7 +215,7 @@ namespace Content.Server.Cuffs.Components
             {
                 if (cuffs.TryAddNewCuffs(user, Owner))
                 {
-                    SoundSystem.Play(EndCuffSound.GetSound(), Filter.Pvs(Owner), Owner);
+                    SoundSystem.Play(Filter.Pvs(Owner), EndCuffSound.GetSound(), Owner);
                     if (target == user)
                     {
                         user.PopupMessage(Loc.GetString("handcuff-component-cuff-self-success-message"));

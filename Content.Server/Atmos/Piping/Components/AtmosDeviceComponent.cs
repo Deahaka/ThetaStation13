@@ -32,7 +32,7 @@ namespace Content.Server.Atmos.Piping.Components
         [ViewVariables]
         public TimeSpan LastProcess { get; set; } = TimeSpan.Zero;
 
-        public EntityUid? JoinedGrid { get; set; }
+        public GridId? JoinedGrid { get; set; }
     }
 
     public sealed class AtmosDeviceUpdateEvent : EntityEventArgs

@@ -1482,7 +1482,10 @@ entities:
     type: Transform
   - isPlaceable: False
     type: PlaceableSurface
-
+  - containers:
+      EntityStorageComponent: !type:Container
+        ents: []
+    type: ContainerContainer
 - uid: 132
   type: ClosetEmergencyFilledRandom
   components:
@@ -1491,7 +1494,10 @@ entities:
     type: Transform
   - isPlaceable: False
     type: PlaceableSurface
-
+  - containers:
+      EntityStorageComponent: !type:Container
+        ents: []
+    type: ContainerContainer
 - uid: 133
   type: ClosetEmergencyFilledRandom
   components:
@@ -1500,7 +1506,10 @@ entities:
     type: Transform
   - isPlaceable: False
     type: PlaceableSurface
-
+  - containers:
+      EntityStorageComponent: !type:Container
+        ents: []
+    type: ContainerContainer
 - uid: 134
   type: SalvageMaterialCrateSpawner
   components:
@@ -1528,9 +1537,9 @@ entities:
   - isPlaceable: False
     type: PlaceableSurface
   - containers:
-      entity_storage: !type:Container
+      EntityStorageComponent: !type:Container
         ents: []
-      paper_label: !type:ContainerSlot {}
+      PaperLabel: !type:ContainerSlot {}
     type: ContainerContainer
 - uid: 138
   type: ClosetBase
@@ -1540,7 +1549,10 @@ entities:
     type: Transform
   - isPlaceable: False
     type: PlaceableSurface
-
+  - containers:
+      EntityStorageComponent: !type:Container
+        ents: []
+    type: ContainerContainer
 - uid: 139
   type: CrateGenericSteel
   components:
@@ -1550,9 +1562,9 @@ entities:
   - isPlaceable: False
     type: PlaceableSurface
   - containers:
-      entity_storage: !type:Container
+      EntityStorageComponent: !type:Container
         ents: []
-      paper_label: !type:ContainerSlot {}
+      PaperLabel: !type:ContainerSlot {}
     type: ContainerContainer
 - uid: 140
   type: SalvageCanisterSpawner

@@ -9,6 +9,7 @@ namespace Content.Server.Administration.Commands;
 [AdminCommand(AdminFlags.Mapping)]
 public sealed class VariantizeCommand : IConsoleCommand
 {
+
     public string Command => "variantize";
 
     public string Description => Loc.GetString("variantize-command-description");
@@ -23,26 +24,26 @@ public sealed class VariantizeCommand : IConsoleCommand
             return;
         }
 
-        var entMan = IoCManager.Resolve<IEntityManager>();
+        var mapManager = IoCManager.Resolve<IMapManager>();
         var random = IoCManager.Resolve<IRobustRandom>();
 
-        if (EntityUid.TryParse(args[0], out var euid))
+        if (!int.TryParse(args[0], out var targetId))
         {
-            shell.WriteError($"Failed to parse euid '{args[0]}'.");
+            shell.WriteError(Loc.GetString("shell-argument-must-be-number"));
             return;
         }
 
-        if (!entMan.TryGetComponent(euid, out IMapGridComponent? gridComp))
+        var gridId = new GridId(targetId);
+        if (!mapManager.TryGetGrid(gridId, out var grid))
         {
-            shell.WriteError($"Euid '{euid}' does not exist or is not a grid.");
+            shell.WriteError(Loc.GetString("shell-invalid-grid-id"));
             return;
         }
-
-        foreach (var tile in gridComp.Grid.GetAllTiles())
+        foreach (var tile in grid.GetAllTiles())
         {
             var def = tile.GetContentTileDefinition();
             var newTile = new Tile(tile.Tile.TypeId, tile.Tile.Flags, random.Pick(def.PlacementVariants));
-            gridComp.Grid.SetTile(tile.GridIndices, newTile);
+            grid.SetTile(tile.GridIndices, newTile);
         }
     }
 }

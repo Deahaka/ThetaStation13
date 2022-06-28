@@ -1,4 +1,4 @@
-using Content.Server.Administration;
+﻿using Content.Server.Administration;
 using Content.Server.Atmos.EntitySystems;
 using Content.Shared.Administration;
 using Content.Shared.Atmos;
@@ -12,28 +12,22 @@ namespace Content.Server.Atmos.Commands
     {
         public string Command => "addgas";
         public string Description => "Adds gas at a certain position.";
-        public string Help => "addgas <X> <Y> <GridEid> <Gas> <moles>";
+        public string Help => "addgas <X> <Y> <GridId> <Gas> <moles>";
 
         public void Execute(IConsoleShell shell, string argStr, string[] args)
         {
             if (args.Length < 5) return;
-
             if(!int.TryParse(args[0], out var x)
                || !int.TryParse(args[1], out var y)
-               || !EntityUid.TryParse(args[2], out var euid)
+               || !int.TryParse(args[2], out var id)
                || !(AtmosCommandUtils.TryParseGasID(args[3], out var gasId))
                || !float.TryParse(args[4], out var moles)) return;
 
-            var entMan = IoCManager.Resolve<IEntityManager>();
-            if (!entMan.HasComponent<IMapGridComponent>(euid))
-            {
-                shell.WriteError($"Euid '{euid}' does not exist or is not a grid.");
-                return;
-            }
+            var gridId = new GridId(id);
 
             var atmosphereSystem = EntitySystem.Get<AtmosphereSystem>();
             var indices = new Vector2i(x, y);
-            var tile = atmosphereSystem.GetTileMixture(euid, indices, true);
+            var tile = atmosphereSystem.GetTileMixture(gridId, indices, true);
 
             if (tile == null)
             {

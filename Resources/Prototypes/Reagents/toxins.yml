@@ -309,4 +309,4 @@
               Cellular: 1
         - !type:ChemCauseDisease
           causeChance: 1
-          disease: ActiveZombieVirus
+          disease: ZombieInfection

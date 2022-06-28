@@ -75,13 +75,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-    - trigger:
-        !type:DamageTrigger
-        damage: 15
+        damage: 1
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -127,13 +121,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 100
-      behaviors:
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-    - trigger:
-        !type:DamageTrigger
-        damage: 25
+        damage: 1
       behaviors:
       - !type:PlaySoundBehavior
         sound:
@@ -172,7 +160,7 @@
         acts: [ "Destruction" ]
     - trigger:
         !type:DamageTrigger
-        damage: 25
+        damage: 15
       behaviors:
       - !type:PlaySoundBehavior
         sound:

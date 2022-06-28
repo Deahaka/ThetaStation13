@@ -238,8 +238,6 @@
   - type: Sprite
     sprite: Structures/Wallmounts/Lighting/light_small.rsi
     state: empty
-  - type: AmbientSound
-    enabled: false
   - type: PointLight
     enabled: false
     offset: "0, -0.5"

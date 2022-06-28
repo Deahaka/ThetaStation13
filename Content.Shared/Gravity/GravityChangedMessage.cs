@@ -4,13 +4,13 @@ namespace Content.Shared.Gravity
 {
     public sealed class GravityChangedMessage : EntityEventArgs
     {
-        public GravityChangedMessage(EntityUid changedGridIndex, bool newGravityState)
+        public GravityChangedMessage(GridId changedGridIndex, bool newGravityState)
         {
             HasGravity = newGravityState;
             ChangedGridIndex = changedGridIndex;
         }
 
-        public EntityUid ChangedGridIndex { get; }
+        public GridId ChangedGridIndex { get; }
 
         public bool HasGravity { get; }
     }

@@ -1,7 +1,8 @@
-using Content.Server.Administration;
+﻿using Content.Server.Administration;
 using Content.Server.Atmos.Components;
 using Content.Shared.Administration;
 using Robust.Shared.Console;
+using Robust.Shared.Map;
 
 namespace Content.Server.Atmos.Commands
 {
@@ -20,29 +21,39 @@ namespace Content.Server.Atmos.Commands
                 return;
             }
 
+            if (!int.TryParse(args[0], out var id))
+            {
+                shell.WriteLine($"{args[0]} is not a valid integer.");
+                return;
+            }
+
+            var gridId = new GridId(id);
+
+            var mapMan = IoCManager.Resolve<IMapManager>();
+
+            if (!gridId.IsValid() || !mapMan.TryGetGrid(gridId, out var gridComp))
+            {
+                shell.WriteLine($"{gridId} is not a valid grid id.");
+                return;
+            }
+
             var entMan = IoCManager.Resolve<IEntityManager>();
 
-            if (EntityUid.TryParse(args[0], out var euid))
+            if (!entMan.EntityExists(gridComp.GridEntityId))
             {
-                shell.WriteError($"Failed to parse euid '{args[0]}'.");
+                shell.WriteLine("Failed to get grid entity.");
                 return;
             }
 
-            if (!entMan.HasComponent<IMapGridComponent>(euid))
-            {
-                shell.WriteError($"Euid '{euid}' does not exist or is not a grid.");
-                return;
-            }
-
-            if (entMan.HasComponent<IAtmosphereComponent>(euid))
+            if (entMan.HasComponent<IAtmosphereComponent>(gridComp.GridEntityId))
             {
                 shell.WriteLine("Grid already has an atmosphere.");
                 return;
             }
 
-            entMan.AddComponent<UnsimulatedGridAtmosphereComponent>(euid);
+            entMan.AddComponent<UnsimulatedGridAtmosphereComponent>(gridComp.GridEntityId);
 
-            shell.WriteLine($"Added unsimulated atmosphere to grid {euid}.");
+            shell.WriteLine($"Added unsimulated atmosphere to grid {id}.");
         }
     }
 

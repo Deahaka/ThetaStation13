@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Robust.Client.Graphics;
 using Robust.Client.Input;
@@ -276,11 +276,14 @@ namespace Content.Client.Viewport
             var drawBox = GetDrawBox();
             var scaleFactor = drawBox.Size / (Vector2) _viewport!.Size;
 
-            if (scaleFactor.X == 0 || scaleFactor.Y == 0)
+            if (scaleFactor == (0, 0))
                 // Basically a nonsense scenario, at least make sure to return something that can be inverted.
                 return Matrix3.Identity;
 
-            return Matrix3.CreateTransform(GlobalPixelPosition + drawBox.TopLeft, 0, scaleFactor);
+            var scale = Matrix3.CreateScale(scaleFactor);
+            var translate = Matrix3.CreateTranslation(GlobalPixelPosition + drawBox.TopLeft);
+
+            return scale * translate;
         }
 
         private void EnsureViewportCreated()

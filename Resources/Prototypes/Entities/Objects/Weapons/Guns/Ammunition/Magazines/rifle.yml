@@ -8,8 +8,6 @@
   - type: Tag
     tags:
       - MagazineRifle
-  - type: Item
-    size: 5
   - type: BallisticAmmoProvider
     whitelist:
       tags:

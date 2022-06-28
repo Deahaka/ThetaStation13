@@ -41,7 +41,7 @@ public sealed class ExplosionGridTileFlood : ExplosionTileFlood
         float intensityStepSize,
         int typeIndex,
         Dictionary<Vector2i, NeighborFlag> edgeTiles,
-        EntityUid? referenceGrid,
+        GridId? referenceGrid,
         Matrix3 spaceMatrix,
         Angle spaceAngle)
     {
@@ -63,7 +63,7 @@ public sealed class ExplosionGridTileFlood : ExplosionTileFlood
             }
         }
 
-        if (referenceGrid == Grid.GridEntityId)
+        if (referenceGrid == Grid.Index)
             return;
 
         _needToTransform = true;

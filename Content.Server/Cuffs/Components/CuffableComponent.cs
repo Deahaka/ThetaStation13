@@ -216,11 +216,11 @@ namespace Content.Server.Cuffs.Components
 
             if (isOwner)
             {
-                SoundSystem.Play(cuff.StartBreakoutSound.GetSound(), Filter.Pvs(Owner), Owner);
+                SoundSystem.Play(Filter.Pvs(Owner), cuff.StartBreakoutSound.GetSound(), Owner);
             }
             else
             {
-                SoundSystem.Play(cuff.StartUncuffSound.GetSound(), Filter.Pvs(Owner), Owner);
+                SoundSystem.Play(Filter.Pvs(Owner), cuff.StartUncuffSound.GetSound(), Owner);
             }
 
             var uncuffTime = isOwner ? cuff.BreakoutTime : cuff.UncuffTime;
@@ -242,7 +242,7 @@ namespace Content.Server.Cuffs.Components
 
             if (result != DoAfterStatus.Cancelled)
             {
-                SoundSystem.Play(cuff.EndUncuffSound.GetSound(), Filter.Pvs(Owner), Owner);
+                SoundSystem.Play(Filter.Pvs(Owner), cuff.EndUncuffSound.GetSound(), Owner);
 
                 Container.ForceRemove(cuffsToRemove.Value);
                 var transform = _entMan.GetComponent<TransformComponent>(cuffsToRemove.Value);

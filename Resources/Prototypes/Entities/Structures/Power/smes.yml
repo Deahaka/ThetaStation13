@@ -23,7 +23,7 @@
       visuals:
         - type: SmesVisualizer
     - type: Battery
-      maxCharge: 10000000
+      maxCharge: 1000
       startingCharge: 0
     - type: ExaminableBattery
     - type: NodeContainer

@@ -86,9 +86,9 @@ public sealed class StationSystem : EntitySystem
 
     private void OnPostGameMapLoad(PostGameMapLoad ev)
     {
-        var dict = new Dictionary<string, List<EntityUid>>();
+        var dict = new Dictionary<string, List<GridId>>();
 
-        void AddGrid(string station, EntityUid grid)
+        void AddGrid(string station, GridId grid)
         {
             if (dict.ContainsKey(station))
             {
@@ -96,7 +96,7 @@ public sealed class StationSystem : EntitySystem
             }
             else
             {
-                dict[station] = new List<EntityUid> {grid};
+                dict[station] = new List<GridId> {grid};
             }
         }
 
@@ -104,7 +104,7 @@ public sealed class StationSystem : EntitySystem
         foreach (var grid in ev.Grids)
         {
             // We still setup the grid
-            if (!TryComp<BecomesStationComponent>(grid, out var becomesStation))
+            if (!TryComp<BecomesStationComponent>(_mapManager.GetGridEuid(grid), out var becomesStation))
                 continue;
 
             AddGrid(becomesStation.Id, grid);
@@ -123,7 +123,7 @@ public sealed class StationSystem : EntitySystem
         // Iterate over all PartOfStation
         foreach (var grid in ev.Grids)
         {
-            if (!TryComp<PartOfStationComponent>(grid, out var partOfStation))
+            if (!TryComp<PartOfStationComponent>(_mapManager.GetGridEuid(grid), out var partOfStation))
                 continue;
 
             AddGrid(partOfStation.Id, grid);
@@ -136,7 +136,7 @@ public sealed class StationSystem : EntitySystem
                 stationConfig = ev.GameMap.Stations[id];
             else
                 _sawmill.Error($"The station {id} in map {ev.GameMap.ID} does not have an associated station config!");
-            InitializeNewStation(stationConfig, gridIds, ev.StationName);
+            InitializeNewStation(stationConfig, gridIds.Select(x => _mapManager.GetGridEuid(x)), ev.StationName);
         }
     }
 
@@ -222,11 +222,11 @@ public sealed class StationSystem : EntitySystem
 
         var stationMember = AddComp<StationMemberComponent>(mapGrid);
         stationMember.Station = station;
-        stationData.Grids.Add(gridComponent.Owner);
+        stationData.Grids.Add(gridComponent.GridIndex);
 
-        RaiseLocalEvent(station, new StationGridAddedEvent(gridComponent.Owner, false));
+        RaiseLocalEvent(station, new StationGridAddedEvent(gridComponent.GridIndex, false));
 
-        _sawmill.Info($"Adding grid {mapGrid}:{gridComponent.Owner} to station {Name(station)} ({station})");
+        _sawmill.Info($"Adding grid {mapGrid}:{gridComponent.GridIndex} to station {Name(station)} ({station})");
     }
 
     /// <summary>
@@ -245,10 +245,10 @@ public sealed class StationSystem : EntitySystem
             throw new ArgumentException("Tried to use a non-station entity as a station!", nameof(station));
 
         RemComp<StationMemberComponent>(mapGrid);
-        stationData.Grids.Remove(gridComponent.Owner);
+        stationData.Grids.Remove(gridComponent.GridIndex);
 
-        RaiseLocalEvent(station, new StationGridRemovedEvent(gridComponent.Owner));
-        _sawmill.Info($"Removing grid {mapGrid}:{gridComponent.Owner} from station {Name(station)} ({station})");
+        RaiseLocalEvent(station, new StationGridRemovedEvent(gridComponent.GridIndex));
+        _sawmill.Info($"Removing grid {mapGrid}:{gridComponent.GridIndex} from station {Name(station)} ({station})");
     }
 
     /// <summary>
@@ -317,13 +317,15 @@ public sealed class StationSystem : EntitySystem
             return CompOrNull<StationMemberComponent>(entity)?.Station;
         }
 
-        if (xform.GridEntityId == EntityUid.Invalid)
+        if (xform.GridID == GridId.Invalid)
         {
             Logger.Debug("A");
             return null;
         }
 
-        return CompOrNull<StationMemberComponent>(xform.GridEntityId)?.Station;
+        var grid = _mapManager.GetGridEuid(xform.GridID);
+
+        return CompOrNull<StationMemberComponent>(grid)?.Station;
     }
 }
 
@@ -354,7 +356,7 @@ public sealed class StationGridAddedEvent : EntityEventArgs
     /// <summary>
     /// ID of the grid added to the station.
     /// </summary>
-    public EntityUid GridId;
+    public GridId GridId;
 
     /// <summary>
     /// Indicates that the event was fired during station setup,
@@ -362,7 +364,7 @@ public sealed class StationGridAddedEvent : EntityEventArgs
     /// </summary>
     public bool IsSetup;
 
-    public StationGridAddedEvent(EntityUid gridId, bool isSetup)
+    public StationGridAddedEvent(GridId gridId, bool isSetup)
     {
         GridId = gridId;
         IsSetup = isSetup;
@@ -378,9 +380,9 @@ public sealed class StationGridRemovedEvent : EntityEventArgs
     /// <summary>
     /// ID of the grid removed from the station.
     /// </summary>
-    public EntityUid GridId;
+    public GridId GridId;
 
-    public StationGridRemovedEvent(EntityUid gridId)
+    public StationGridRemovedEvent(GridId gridId)
     {
         GridId = gridId;
     }

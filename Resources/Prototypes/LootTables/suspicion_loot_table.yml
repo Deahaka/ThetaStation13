@@ -5,19 +5,19 @@
   - id: WeaponRifleAk
     amount: 0
     maxAmount: 5
-  - id: WeaponRifleM90GrenadeLauncher
+  - id: WeaponRifleBulldog
     amount: 0
     maxAmount: 5
-  - id: WeaponRifleLecter
+  - id: WeaponRifleWintermute
     amount: 0
     maxAmount: 5
-  - id: WeaponPistolViper
+  - id: WeaponPistolClarissa
     amount: 0
     maxAmount: 5
   - id: WeaponPistolHandmade
     amount: 0
     maxAmount: 5
-  - id: WeaponPistolCobra
+  - id: WeaponPistolMandella
     amount: 0
     maxAmount: 5
   - id: WeaponPistolMk58
@@ -46,13 +46,13 @@
     amount: 0
     maxAmount: 5
 
-  - id: WeaponShotgunBulldog
+  - id: WeaponShotgunBojevic
     amount: 0
     maxAmount: 5
   - id: WeaponShotgunDoubleBarreled
     amount: 0
     maxAmount: 5
-  - id: WeaponShotgunEnforcer
+  - id: WeaponShotgunGladstone
     amount: 0
     maxAmount: 5
   - id: WeaponShotgunKammerer
@@ -68,7 +68,7 @@
   - id: WeaponSubMachineGunC20r
     amount: 0
     maxAmount: 5
-  - id: WeaponSubMachineGunVector
+  - id: WeaponSubMachineGunDrozd
     amount: 0
     maxAmount: 5
   - id: WeaponSubMachineGunWt550

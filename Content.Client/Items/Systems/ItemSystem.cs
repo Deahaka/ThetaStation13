@@ -92,7 +92,7 @@ public sealed class ItemSystem : SharedItemSystem
         if (!rsi.TryGetState(state, out var _))
             return false;
 
-        var layer = new PrototypeLayerData();
+        var layer = PrototypeLayerData.New();
         layer.RsiPath = rsi.Path.ToString();
         layer.State = state;
         layer.MapKeys = new() { state };

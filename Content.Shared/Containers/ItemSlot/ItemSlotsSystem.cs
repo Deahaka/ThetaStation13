@@ -22,7 +22,6 @@ namespace Content.Shared.Containers.ItemSlots
     public sealed class ItemSlotsSystem : EntitySystem
     {
         [Dependency] private readonly ActionBlockerSystem _actionBlockerSystem = default!;
-        [Dependency] private readonly SharedContainerSystem _containers = default!;
         [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
         [Dependency] private readonly SharedHandsSystem _handsSystem = default!;
         [Dependency] private readonly IGameTiming _gameTiming = default!;
@@ -73,7 +72,7 @@ namespace Content.Shared.Containers.ItemSlots
         {
             foreach (var (id, slot) in itemSlots.Slots)
             {
-                slot.ContainerSlot = _containers.EnsureContainer<ContainerSlot>(itemSlots.Owner, id);
+                slot.ContainerSlot = ContainerHelpers.EnsureContainer<ContainerSlot>(itemSlots.Owner, id);
             }
         }
 
@@ -84,7 +83,7 @@ namespace Content.Shared.Containers.ItemSlots
         public void AddItemSlot(EntityUid uid, string id, ItemSlot slot)
         {
             var itemSlots = EntityManager.EnsureComponent<ItemSlotsComponent>(uid);
-            slot.ContainerSlot = _containers.EnsureContainer<ContainerSlot>(itemSlots.Owner, id);
+            slot.ContainerSlot = ContainerHelpers.EnsureContainer<ContainerSlot>(itemSlots.Owner, id);
             if (itemSlots.Slots.ContainsKey(id))
                 Logger.Error($"Duplicate item slot key. Entity: {EntityManager.GetComponent<MetaDataComponent>(itemSlots.Owner).EntityName} ({uid}), key: {id}");
             itemSlots.Slots[id] = slot;
@@ -225,7 +224,7 @@ namespace Content.Shared.Containers.ItemSlots
             if (excluded != null)
                 filter = filter.RemoveWhereAttachedEntity(entity => entity == excluded.Value);
 
-            SoundSystem.Play(sound.GetSound(), filter, uid, audioParams);
+            SoundSystem.Play(filter, sound.GetSound(), uid, audioParams);
         }
 
         /// <summary>
@@ -432,7 +431,6 @@ namespace Content.Shared.Containers.ItemSlots
                     verb.Text = Loc.GetString(slot.EjectVerbText);
                 }
 
-                verb.Priority = slot.Priority;
                 args.Verbs.Add(verb);
             }
         }
@@ -464,7 +462,6 @@ namespace Content.Shared.Containers.ItemSlots
                 else
                     takeVerb.Text = Loc.GetString(slot.EjectVerbText);
 
-                takeVerb.Priority = slot.Priority;
                 args.Verbs.Add(takeVerb);
             }
 
@@ -503,7 +500,6 @@ namespace Content.Shared.Containers.ItemSlots
                     insertVerb.Text = verbSubject;
                 }
 
-                insertVerb.Priority = slot.Priority;
                 args.Verbs.Add(insertVerb);
             }
         }

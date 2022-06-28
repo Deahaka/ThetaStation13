@@ -106,9 +106,11 @@ namespace Content.Server.PDA.Ringer
                 ringer.TimeElapsed -= NoteDelay;
                 var ringerXform = Transform(ringer.Owner);
 
-                SoundSystem.Play(GetSound(ringer.Ringtone[ringer.NoteCount]),
+                SoundSystem.Play(
                     Filter.Empty().AddInRange(ringerXform.MapPosition, ringer.Range),
-                    ringer.Owner, AudioParams.Default.WithMaxDistance(ringer.Range).WithVolume(ringer.Volume));
+                    GetSound(ringer.Ringtone[ringer.NoteCount]),
+                    ringer.Owner,
+                    AudioParams.Default.WithMaxDistance(ringer.Range).WithVolume(ringer.Volume));
 
                 ringer.NoteCount++;
 

@@ -57,25 +57,26 @@ public sealed partial class AtmosphereSystem
        mixtures[5].AdjustMoles(Gas.Plasma, Atmospherics.MolesCellGasMiner);
        mixtures[5].Temperature = 5000f;
 
-       var entMan = IoCManager.Resolve<IEntityManager>();
-
        foreach (var gid in args)
        {
-           if(EntityUid.TryParse(gid, out var euid))
+           // I like offering detailed error messages, that's why I don't use one of the extension methods.
+           if (!int.TryParse(gid, out var i) || i <= 0)
            {
-               shell.WriteError($"Failed to parse euid '{gid}'.");
-               return;
+               shell.WriteError($"Invalid grid ID \"{gid}\".");
+               continue;
            }
 
-           if (!TryComp(euid, out IMapGridComponent? gridComp))
+           var gridId = new GridId(i);
+
+           if (!_mapManager.TryGetGrid(gridId, out var mapGrid))
            {
-               shell.WriteError($"Euid '{euid}' does not exist or is not a grid.");
-               return;
+               shell.WriteError($"Grid \"{i}\" doesn't exist.");
+               continue;
            }
 
-           if (!TryComp(euid, out GridAtmosphereComponent? gridAtmosphere))
+           if (!TryComp(mapGrid.GridEntityId, out GridAtmosphereComponent? gridAtmosphere))
            {
-               shell.WriteError($"Grid \"{euid}\" has no atmosphere component, try addatmos.");
+               shell.WriteError($"Grid \"{i}\" has no atmosphere component, try addatmos.");
                continue;
            }
 
@@ -87,7 +88,7 @@ public sealed partial class AtmosphereSystem
 
                tile.Clear();
                var mixtureId = 0;
-               foreach (var entUid in gridComp.Grid.GetAnchoredEntities(indices))
+               foreach (var entUid in mapGrid.GetAnchoredEntities(indices))
                {
                    if (!TryComp(entUid, out AtmosFixMarkerComponent? afm))
                        continue;

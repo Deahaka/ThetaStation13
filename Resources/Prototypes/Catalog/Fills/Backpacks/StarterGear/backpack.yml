@@ -138,7 +138,7 @@
     - type: StorageFill
       contents:
         - id: BoxSurvival
-        - id: WeaponPulsePistol
+        - id: WeaponPulsePistolPdw
         - id: WeaponPistolMk58
         - id: MagazinePistolHighCapacityRubber
         - id: MagazinePistol
@@ -154,8 +154,8 @@
       contents:
         - id: BoxSurvival
         - id: WeaponTaser
-        - id: WeaponPulsePistol
-        - id: WeaponPulseCarbine
+        - id: WeaponPulsePistolPdw
+        - id: WeaponPulseCarbineDeac
         - id: BoxHandcuff
         - id: Handcuffs
         
@@ -167,7 +167,7 @@
     - type: StorageFill
       contents:
         - id: BoxSurvival
-        - id: WeaponPulseCarbine
+        - id: WeaponPulseCarbineDeac
         - id: Hypospray
         - id: MedkitAdvancedFilled
 
@@ -181,7 +181,7 @@
       contents:
         - id: BoxSurvival
         - id: trayScanner
-        - id: WeaponPulseCarbine
+        - id: WeaponPulseCarbineDeac
         - id: RCD
         - id: RCDAmmo
         - id: RCDAmmo
@@ -195,7 +195,7 @@
     - type: StorageFill
       contents:
         - id: BoxSurvival
-        - id: WeaponPulsePistol
+        - id: WeaponPulsePistolPdw
         - id: MedkitFilled
         - id: BoxLightMixed
         - id: BoxLightMixed

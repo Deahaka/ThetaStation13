@@ -40,10 +40,8 @@
   - type: Tag
     tags:
     - Pipe
-  - type: Physics
-    canCollide: false
   - type: AmbientSound
-    enabled: false
+    enabled: true
     volume: -15
     range: 2
     sound:

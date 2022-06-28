@@ -26,7 +26,7 @@ namespace Content.Server.AI.Operators.Inventory
         {
             var targetTransform = _entMan.GetComponent<TransformComponent>(_useTarget);
 
-            if (targetTransform.GridEntityId != _entMan.GetComponent<TransformComponent>(_owner).GridEntityId)
+            if (targetTransform.GridID != _entMan.GetComponent<TransformComponent>(_owner).GridID)
             {
                 return Outcome.Failed;
             }

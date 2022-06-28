@@ -112,7 +112,7 @@ namespace Content.Server.GameTicking
         /// <param name="loadOptions">Map loading options, includes offset.</param>
         /// <param name="stationName">Name to assign to the loaded station.</param>
         /// <returns>All loaded entities and grids.</returns>
-        public (IReadOnlyList<EntityUid>, IReadOnlyList<EntityUid>) LoadGameMap(GameMapPrototype map, MapId targetMapId, MapLoadOptions? loadOptions, string? stationName = null)
+        public (IReadOnlyList<EntityUid>, IReadOnlyList<GridId>) LoadGameMap(GameMapPrototype map, MapId targetMapId, MapLoadOptions? loadOptions, string? stationName = null)
         {
             var loadOpts = loadOptions ?? new MapLoadOptions();
 
@@ -121,11 +121,10 @@ namespace Content.Server.GameTicking
 
             var (entities, gridIds) = _mapLoader.LoadMap(targetMapId, ev.GameMap.MapPath.ToString(), ev.Options);
 
-            var gridUids = gridIds.Select(g => (EntityUid)g).ToList();
-            RaiseLocalEvent(new PostGameMapLoad(map, targetMapId, entities, gridUids, stationName));
+            RaiseLocalEvent(new PostGameMapLoad(map, targetMapId, entities, gridIds, stationName));
 
             _spawnPoint = _mapManager.GetGrid(gridIds[0]).ToCoordinates();
-            return (entities, gridUids);
+            return (entities, gridIds);
         }
 
         public void StartRound(bool force = false)
@@ -327,10 +326,7 @@ namespace Content.Server.GameTicking
             // This ordering mechanism isn't great (no ordering of minds) but functions
             var listOfPlayerInfoFinal = listOfPlayerInfo.OrderBy(pi => pi.PlayerOOCName).ToArray();
             _playersInGame.Clear();
-
-            RaiseNetworkEvent(new RoundEndMessageEvent(gamemodeTitle, roundEndText, roundDuration, RoundId,
-                listOfPlayerInfoFinal.Length, listOfPlayerInfoFinal, LobbySong,
-                new SoundCollectionSpecifier("RoundEnd").GetSound()));
+            RaiseNetworkEvent(new RoundEndMessageEvent(gamemodeTitle, roundEndText, roundDuration, RoundId, listOfPlayerInfoFinal.Length, listOfPlayerInfoFinal, LobbySong));
         }
 
         public void RestartRound()
@@ -353,6 +349,7 @@ namespace Content.Server.GameTicking
             LobbySong = _robustRandom.Pick(_lobbyMusicCollection.PickFiles).ToString();
             RandomizeLobbyBackground();
             ResettingCleanup();
+            SoundSystem.Play(Filter.Broadcast(), new SoundCollectionSpecifier("RoundEnd").GetSound());
 
             if (!LobbyEnabled)
             {
@@ -480,7 +477,7 @@ namespace Content.Server.GameTicking
                     _chatSystem.DispatchGlobalStationAnnouncement(Loc.GetString(proto.Message), playDefaultSound: true);
 
                 if (proto.Sound != null)
-                    SoundSystem.Play(proto.Sound.GetSound(), Filter.Broadcast());
+                    SoundSystem.Play(Filter.Broadcast(), proto.Sound.GetSound());
 
                 // Only play one because A
                 break;
@@ -558,10 +555,10 @@ namespace Content.Server.GameTicking
         public readonly GameMapPrototype GameMap;
         public readonly MapId Map;
         public readonly IReadOnlyList<EntityUid> Entities;
-        public readonly IReadOnlyList<EntityUid> Grids;
+        public readonly IReadOnlyList<GridId> Grids;
         public readonly string? StationName;
 
-        public PostGameMapLoad(GameMapPrototype gameMap, MapId map, IReadOnlyList<EntityUid> entities, IReadOnlyList<EntityUid> grids, string? stationName)
+        public PostGameMapLoad(GameMapPrototype gameMap, MapId map, IReadOnlyList<EntityUid> entities, IReadOnlyList<GridId> grids, string? stationName)
         {
             GameMap = gameMap;
             Map = map;

@@ -5,8 +5,6 @@
   components:
   - type: Sprite
     netsync: false
-  - type: Item
-    size: 50
   - type: AmmoCounter
   - type: Gun
     fireRate: 2
@@ -39,6 +37,7 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Item
+    size: 12
     sprite: Objects/Weapons/Guns/Battery/laser_retro.rsi
   - type: HitscanBatteryAmmoProvider
     proto: RedLaser
@@ -64,6 +63,7 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Item
+    size: 48
     sprite: Objects/Weapons/Guns/Battery/makeshift.rsi
   - type: HitscanBatteryAmmoProvider
     proto: RedLaser
@@ -76,13 +76,13 @@
     node: makeshiftLaser
 
 - type: entity
-  name: laser gun
+  name: cog laser carbine
   parent: BaseWeaponBattery
-  id: WeaponLaserCarbine
+  id: WeaponLaserRifleCog
   description: Favoured by Nanotrasen Security for being cheap and easy to use.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
+    sprite: Objects/Weapons/Guns/Battery/cog.rsi
     layers:
     - state: base
       map: ["enum.GunVisualLayers.Base"]
@@ -90,7 +90,8 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Item
-    sprite: Objects/Weapons/Guns/Battery/laser_gun.rsi
+    size: 24
+    sprite: Objects/Weapons/Guns/Battery/cog.rsi
   - type: Gun
     selectedMode: SemiAuto
     availableModes:
@@ -100,9 +101,9 @@
     fireCost: 62.5
 
 - type: entity
-  name: pulse pistol
+  name: PDW-10 pulse pistol
   parent: BaseWeaponBattery
-  id: WeaponPulsePistol
+  id: WeaponPulsePistolPdw
   description: A state of the art energy pistol favoured as a sidearm by the NT-ERT operatives.
   components:
   - type: Sprite
@@ -114,6 +115,7 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Item
+    size: 12
     sprite: Objects/Weapons/Guns/Battery/pulse_pistol.rsi
   - type: Gun
     selectedMode: SemiAuto
@@ -129,9 +131,9 @@
     startingCharge: 2000
 
 - type: entity
-  name: pulse carbine
+  name: DEAC-12 pulse carbine
   parent: BaseWeaponBattery
-  id: WeaponPulseCarbine
+  id: WeaponPulseCarbineDeac
   description: A high tech energy carbine favoured by the NT-ERT operatives.
   components:
   - type: Sprite
@@ -143,7 +145,7 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Item
-    size: 10
+    size: 24
     sprite: Objects/Weapons/Guns/Battery/pulse_carbine.rsi
   - type: Gun
     selectedMode: SemiAuto
@@ -161,10 +163,10 @@
     startingCharge: 5000
 
 - type: entity
-  name: pulse rifle
+  name: destroyer pulse rifle
   parent: BaseWeaponBattery
-  id: WeaponPulseRifle
-  description: A weapon that is almost as infamous as its users.
+  id: WeaponPulseRifleDestroyer
+  description: A weapon that fully lives up to its name.
   components:
   - type: Sprite
     sprite: Objects/Weapons/Guns/Battery/pulse_rifle.rsi
@@ -175,6 +177,7 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Item
+    size: 24
     sprite: Objects/Weapons/Guns/Battery/pulse_rifle.rsi
   - type: Gun
     fireRate: 1.5
@@ -202,6 +205,7 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Item
+    size: 24
     sprite: Objects/Weapons/Guns/Battery/laser_cannon.rsi
   - type: Gun
     fireRate: 1.5
@@ -226,6 +230,7 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Item
+    size: 24
     sprite: Objects/Weapons/Guns/Battery/xray.rsi
   - type: Gun
     soundGunshot:
@@ -258,7 +263,7 @@
       shader: unshaded
   - type: Clothing
     sprite: Objects/Weapons/Guns/Battery/taser.rsi
-    size: 10
+    size: 24
     quickEquip: false
     Slots:
     - Belt
@@ -268,7 +273,7 @@
       path: /Audio/Weapons/Guns/Gunshots/taser.ogg
   - type: ProjectileBatteryAmmoProvider
     proto: BulletTaser
-    fireCost: 50
+    fireCost: 100
   - type: Battery
     maxCharge: 100
     startingCharge: 100
@@ -293,6 +298,7 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Item
+    size: 12
     sprite: Objects/Weapons/Guns/Battery/antiquelasergun.rsi
   - type: Gun
     soundGunshot:

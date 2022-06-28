@@ -1322,7 +1322,10 @@ entities:
     type: Transform
   - isPlaceable: False
     type: PlaceableSurface
-
+  - containers:
+      EntityStorageComponent: !type:Container
+        ents: []
+    type: ContainerContainer
 - uid: 162
   type: Rack
   components:
@@ -1530,7 +1533,10 @@ entities:
     type: Transform
   - isPlaceable: False
     type: PlaceableSurface
-
+  - containers:
+      EntityStorageComponent: !type:Container
+        ents: []
+    type: ContainerContainer
 - uid: 196
   type: ClosetMaintenanceFilledRandom
   components:
@@ -1539,7 +1545,10 @@ entities:
     type: Transform
   - isPlaceable: False
     type: PlaceableSurface
-
+  - containers:
+      EntityStorageComponent: !type:Container
+        ents: []
+    type: ContainerContainer
 - uid: 197
   type: SalvageCanisterSpawner
   components:
@@ -1667,7 +1676,7 @@ entities:
     parent: 0
     type: Transform
 - uid: 217
-  type: WeaponPistolCobra
+  type: WeaponPistolMandella
   components:
   - parent: 207
     type: Transform

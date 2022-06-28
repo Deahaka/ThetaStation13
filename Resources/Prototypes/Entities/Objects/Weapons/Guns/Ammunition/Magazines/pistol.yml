@@ -12,8 +12,6 @@
       tags:
         - CartridgePistol
     capacity: 10
-  - type: Item
-    size: 5
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container
@@ -45,8 +43,6 @@
       tags:
         - CartridgePistol
     capacity: 16
-  - type: Item
-    size: 5
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container
@@ -78,8 +74,6 @@
       tags:
         - CartridgePistol
     capacity: 35
-  - type: Item
-    size: 10
   - type: ContainerContainer
     containers:
       ballistic-ammo: !type:Container

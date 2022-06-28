@@ -862,9 +862,9 @@ entities:
   - isPlaceable: False
     type: PlaceableSurface
   - containers:
-      entity_storage: !type:Container
+      EntityStorageComponent: !type:Container
         ents: []
-      paper_label: !type:ContainerSlot {}
+      PaperLabel: !type:ContainerSlot {}
     type: ContainerContainer
 - uid: 17
   type: WallReinforced

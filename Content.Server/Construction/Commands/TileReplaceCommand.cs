@@ -21,7 +21,7 @@ sealed class TileReplaceCommand : IConsoleCommand
     {
         var player = shell.Player as IPlayerSession;
         var entityManager = IoCManager.Resolve<IEntityManager>();
-        EntityUid gridId;
+        GridId gridId;
         string tileIdA = "";
         string tileIdB = "";
 
@@ -34,18 +34,18 @@ sealed class TileReplaceCommand : IConsoleCommand
                     return;
                 }
 
-                gridId = entityManager.GetComponent<TransformComponent>(playerEntity).GridEntityId;
+                gridId = entityManager.GetComponent<TransformComponent>(playerEntity).GridID;
                 tileIdA = args[0];
                 tileIdB = args[1];
                 break;
             case 3:
-                if (!EntityUid.TryParse(args[0], out var id))
+                if (!int.TryParse(args[0], out var id))
                 {
-                    shell.WriteLine($"{args[0]} is not a valid entity.");
+                    shell.WriteLine($"{args[0]} is not a valid integer.");
                     return;
                 }
 
-                gridId = id;
+                gridId = new GridId(id);
                 tileIdA = args[1];
                 tileIdB = args[2];
                 break;

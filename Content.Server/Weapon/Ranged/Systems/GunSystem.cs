@@ -207,7 +207,7 @@ public sealed partial class GunSystem : SharedGunSystem
     {
         if (string.IsNullOrEmpty(sound)) return;
 
-        SoundSystem.Play(sound, Filter.Pvs(gun, entityManager: EntityManager).RemoveWhereAttachedEntity(e => e == user), gun);
+        SoundSystem.Play(Filter.Pvs(gun, entityManager: EntityManager).RemoveWhereAttachedEntity(e => e == user), sound, gun);
     }
 
     protected override void Popup(string message, EntityUid? uid, EntityUid? user) {}
@@ -239,24 +239,28 @@ public sealed partial class GunSystem : SharedGunSystem
 
             if (type != null && rangedSound.SoundTypes?.TryGetValue(type, out var damageSoundType) == true)
             {
-                SoundSystem.Play(damageSoundType!.GetSound(),
+                SoundSystem.Play(
                     Filter.Pvs(otherEntity, entityManager: EntityManager),
-                    otherEntity, AudioHelpers.WithVariation(DamagePitchVariation));
+                    damageSoundType!.GetSound(),
+                    otherEntity,
+                    AudioHelpers.WithVariation(DamagePitchVariation));
 
                 playedSound = true;
             }
             else if (type != null && rangedSound.SoundGroups?.TryGetValue(type, out var damageSoundGroup) == true)
             {
-                SoundSystem.Play(damageSoundGroup!.GetSound(),
+                SoundSystem.Play(
                     Filter.Pvs(otherEntity, entityManager: EntityManager),
-                    otherEntity, AudioHelpers.WithVariation(DamagePitchVariation));
+                    damageSoundGroup!.GetSound(),
+                    otherEntity,
+                    AudioHelpers.WithVariation(DamagePitchVariation));
 
                 playedSound = true;
             }
         }
 
         if (!playedSound && weaponSound != null)
-            SoundSystem.Play(weaponSound.GetSound(), Filter.Pvs(otherEntity, entityManager: EntityManager), otherEntity);
+            SoundSystem.Play(Filter.Pvs(otherEntity, entityManager: EntityManager), weaponSound.GetSound(), otherEntity);
     }
 
     // TODO: Pseudo RNG so the client can predict these.

@@ -8,8 +8,6 @@
   - type: Sprite
     netsync: false
     state: icon
-  - type: Item
-    size: 10
   - type: Gun
     selectedMode: SemiAuto
     fireRate: 1.5
@@ -43,6 +41,7 @@
       map: ["enum.GunVisualLayers.MagUnshaded"]
       shader: unshaded
   - type: Item
+    size: 12
     sprite: Objects/Weapons/Guns/Revolvers/deckard.rsi
   - type: RevolverAmmoProvider
     capacity: 5
@@ -61,6 +60,7 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/Revolvers/inspector.rsi
   - type: Item
+    size: 12
     sprite: Objects/Weapons/Guns/Revolvers/inspector.rsi
   - type: RevolverAmmoProvider
     capacity: 6
@@ -74,6 +74,7 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/Revolvers/mateba.rsi
   - type: Item
+    size: 12
     sprite: Objects/Weapons/Guns/Revolvers/mateba.rsi
   - type: RevolverAmmoProvider
     capacity: 7
@@ -81,13 +82,14 @@
 - type: entity
   name: Predator
   parent: BaseWeaponRevolver
-  id: WeaponRevolverPython
+  id: WeaponRevolverPredator
   description: A robust revolver favoured by Syndicate agents.
   components:
   - type: Sprite
-    sprite: Objects/Weapons/Guns/Revolvers/python.rsi
+    sprite: Objects/Weapons/Guns/Revolvers/predator.rsi
   - type: Item
-    sprite: Objects/Weapons/Guns/Revolvers/python.rsi
+    size: 12
+    sprite: Objects/Weapons/Guns/Revolvers/predator.rsi
 
 - type: entity
   name: pirate revolver
@@ -98,6 +100,7 @@
   - type: Sprite
     sprite: Objects/Weapons/Guns/Revolvers/pirate_revolver.rsi
   - type: Item
+    size: 12
     sprite: Objects/Weapons/Guns/Revolvers/pirate_revolver.rsi
   - type: Gun
     fireRate: 1

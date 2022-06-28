@@ -66,23 +66,29 @@
 
 - type: entity
   name: chocolate bar
-  parent: BaseItem
+  parent: FoodSnackBase
   id: FoodSnackChocolate
   description: Tastes like cardboard.
   components:
   - type: Sprite
-    sprite: Objects/Consumable/Food/snacks.rsi
     state: chocolatebar
-    netsync: false
   - type: Item
     HeldPrefix: chocolatebar
-    size: 3
   - type: SpawnItemsOnUse
     items:
       - id: FoodPacketChocolateTrash
       - id: FoodSnackChocolateBar
     sound:
       path: /Audio/Effects/unwrap.ogg
+  - type: SolutionContainerManager #seems like you can eat it unwrapped
+    solutions:
+      food:
+        maxVol: 30
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Theobromine
+          Quantity: 3
 
 - type: entity
   name: chocolate bar
@@ -252,35 +258,21 @@
     trash: FoodCookieFortune
 
 - type: entity
-  id: FoodSnackNutribrick
-  parent: BaseItem
   name: nutribrick
+  parent: FoodSnackBase
+  id: FoodSnackNutribrick
   description: A carefully synthesized brick designed to contain the highest ratio of nutriment to volume. Tastes like shit.
   components:
   - type: Item
     size: 10
   - type: Sprite
-    sprite: Objects/Consumable/Food/snacks.rsi
     state: nutribrick
-    netsync: false
   - type: SpawnItemsOnUse
     items:
       - id: FoodPacketMRETrash
       - id: FoodSnackNutribrickOpen
     sound:
       path: /Audio/Effects/unwrap.ogg
-
-- type: entity
-  id: FoodSnackNutribrickOpen
-  parent: FoodSnackBase
-  name: nutribrick
-  description: A carefully synthesized brick designed to contain the highest ratio of nutriment to volume. Tastes like shit.
-  components:
-  - type: Item
-    size: 10
-  - type: Sprite
-    state: nutribrick-open
-  - type: Food
   - type: SolutionContainerManager
     solutions:
       food:
@@ -290,32 +282,30 @@
           Quantity: 25
 
 - type: entity
-  id: FoodSnackMREBrownie
-  parent: BaseItem  
-  name: brownie
-  description: A precisely mixed brownie, made to withstand blunt trauma and harsh conditions. Tastes like shit.
+  name: nutribrick
+  parent: FoodSnackNutribrick
+  id: FoodSnackNutribrickOpen
   components:
   - type: Sprite
-    sprite: Objects/Consumable/Food/snacks.rsi
+    state: nutribrick-open
+  - type: Food
+
+- type: entity
+  name: brownie
+  parent: FoodSnackBase
+  id: FoodSnackMREBrownie
+  description: A precisely mixed brownie, made to withstand blunt trauma and harsh conditions. Tastes like shit.
+  components:
+  - type: Item
+    size: 10
+  - type: Sprite
     state: mre-brownie
-    netsync: false
   - type: SpawnItemsOnUse
     items:
       - id: FoodPacketMRETrash
       - id: FoodSnackMREBrownieOpen
     sound:
       path: /Audio/Effects/unwrap.ogg
-  
-
-- type: entity
-  id: FoodSnackMREBrownieOpen
-  parent: FoodSnackBase
-  name: brownie
-  description: A precisely mixed brownie, made to withstand blunt trauma and harsh conditions. Tastes like shit.
-  components:
-  - type: Sprite
-    state: mre-brownie-open
-  - type: Food
   - type: SolutionContainerManager
     solutions:
       food:
@@ -325,6 +315,15 @@
           Quantity: 10
         - ReagentId: Theobromine
           Quantity: 3
+
+- type: entity
+  name: brownie
+  parent: FoodSnackMREBrownie
+  id: FoodSnackMREBrownieOpen
+  components:
+  - type: Sprite
+    state: mre-brownie-open
+  - type: Food
 
 # Trash
 
