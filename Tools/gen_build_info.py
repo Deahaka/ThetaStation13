@@ -20,9 +20,9 @@ SERVER_FILES = [
 ]
 VERSION = os.environ['GITHUB_SHA']
 FORK_ID = "theta"
-BUILD_URL = f"https://theta.dushess.net/builds/{FORK_ID}/{{FORK_VERSION}}/{FILE}"
-MANIFEST_URL = f"https://theta.dushess.net/manifests/{FORK_ID}/manifest.json"
-MANIFEST_DOWNLOAD_URL = f"https://theta.dushess.net/manifests/{FORK_ID}/manifest/download"
+BUILD_URL = f"https://thetastation.org/builds/{FORK_ID}/{{FORK_VERSION}}/{FILE}"
+MANIFEST_URL = f"https://thetastation.org//manifests/{FORK_ID}/manifest.json"
+MANIFEST_DOWNLOAD_URL = f"https://thetastation.org/manifests/{FORK_ID}/manifest/download"
 
 def main() -> None:
     client_file = os.path.join("release", FILE)
