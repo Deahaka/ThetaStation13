@@ -1,21 +1,4 @@
 Entries:
-- author: 20kdc
-  changes:
-  - {message: Knightship is officially deceased., type: Remove}
-  id: 1433
-  time: '2022-05-02T14:50:37.0000000+00:00'
-- author: Peptide90
-  changes:
-  - {message: Bolas and tiles now break after 3 and 4 throws respectively. Reduced
-      tile damage from 10 to 5. No more tile abuse., type: Tweak}
-  id: 1434
-  time: '2022-05-02T20:49:47.0000000+00:00'
-- author: Peptide90
-  changes:
-  - {message: To deconstruct vents and scrubbers you now need to use the screwdriver
-      before welding., type: Tweak}
-  id: 1435
-  time: '2022-05-02T20:49:53.0000000+00:00'
 - author: mirrorcult
   changes:
   - {message: The ATV now has many possible descriptions., type: Tweak}
@@ -2947,3 +2930,25 @@ Entries:
   - {message: Robot showcase statue is now anchorable, type: Tweak}
   id: 1932
   time: '2022-07-13T02:01:24.0000000+00:00'
+- author: EmoGarbage404
+  changes:
+  - {message: Pizza boxes can no longer swallow players. (for realsies), type: Fix}
+  - {message: Fixed visual issues regarding trays with morgues and crematoriums.,
+    type: Fix}
+  - {message: Fixed visual issues regarding body bags being perpetually open., type: Fix}
+  id: 1933
+  time: '2022-07-13T23:11:59.0000000+00:00'
+- author: mirrorcult
+  changes:
+  - {message: Emotes and LOOC no longer reveal your identity., type: Tweak}
+  - {message: Pulling down/up your mask will now properly affect your identity., type: Fix}
+  id: 1934
+  time: '2022-07-14T05:23:56.0000000+00:00'
+- author: Rane
+  changes:
+  - {message: You now heal yourself much slower than you heal other people when using
+      healing items., type: Tweak}
+  - {message: You can no longer attempt to heal targets that are already at full health.,
+    type: Tweak}
+  id: 1935
+  time: '2022-07-14T05:24:36.0000000+00:00'
